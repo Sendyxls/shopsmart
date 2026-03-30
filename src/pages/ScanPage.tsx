@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';  // ← удали эту строку
 import { useNavigate } from 'react-router-dom';
 import { Camera, Barcode, AlertCircle, X } from 'lucide-react';
 import BarcodeScanner from '../components/Scanner/BarcodeScanner';
 import { api } from '../services/api';
 
 const ScanPage: React.FC = () => {
+  // const { t } = useTranslation();  // ← удали эту строку
   const navigate = useNavigate();
   const [showScanner, setShowScanner] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
