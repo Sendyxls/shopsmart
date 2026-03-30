@@ -6,7 +6,6 @@ import BarcodeScanner from '../components/Scanner/BarcodeScanner';
 import { api } from '../services/api';
 
 const ScanPage: React.FC = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [showScanner, setShowScanner] = useState(false);
   const [isScanning, setIsScanning] = useState(false);

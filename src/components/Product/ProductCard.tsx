@@ -9,7 +9,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const { currency, convertPrice } = useCurrency();
 
     const formatPrice = (price: number) => {

@@ -15,8 +15,8 @@ const PopularPage: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        loadPopularProducts();
-    }, []);
+  loadPopularProducts();
+}, [loadPopularProducts]);
 
     const loadPopularProducts = async () => {
         try {

@@ -108,7 +108,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
         return () => {
             stopScanner();
         };
-    }, [onScan, isScanningActive]);
+    }, [onScan, isScanningActive, t]);
 
     
 
