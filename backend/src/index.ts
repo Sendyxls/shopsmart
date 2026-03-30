@@ -79,3 +79,4 @@ app.listen(port, '0.0.0.0', () => {
     console.log(`   http://${localIP}:${port}/api/health`);
     console.log('================================\n');
 });
+export default app;
