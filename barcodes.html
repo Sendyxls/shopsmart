@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -27,66 +27,62 @@
             text-align: center;
             color: white;
             margin-bottom: 30px;
-            font-size: 2rem;
-        }
-
-        .barcode-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            font-size: 1.8rem;
         }
 
         .barcode-card {
             background: white;
             border-radius: 16px;
             padding: 20px;
+            margin-bottom: 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
 
             .barcode-card:hover {
-                transform: translateY(-5px);
+                transform: scale(1.02);
             }
 
             .barcode-card h3 {
                 color: #333;
-                margin-bottom: 10px;
-                font-size: 1.1rem;
+                margin-bottom: 5px;
+                font-size: 1rem;
             }
 
-            .barcode-card .price {
-                color: #10b981;
-                font-size: 1.5rem;
-                font-weight: bold;
-                margin: 10px 0;
-            }
-
-            .barcode-card .rating {
-                color: #f59e0b;
-                margin-bottom: 15px;
-            }
-
-        .barcode-image {
-            background: #f9fafb;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 15px 0;
+        .price {
+            color: #10b981;
+            font-size: 1.3rem;
+            font-weight: bold;
         }
 
-            .barcode-image img {
+        .rating {
+            color: #f59e0b;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .barcode-img {
+            margin: 15px 0;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+            .barcode-img img {
                 max-width: 100%;
                 height: auto;
             }
 
-        .barcode-number {
+        .code {
             font-family: monospace;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: #f3f4f6;
             padding: 8px;
             border-radius: 6px;
             margin-top: 10px;
-            word-break: break-all;
+            letter-spacing: 2px;
         }
 
         .badge {
@@ -95,17 +91,27 @@
             color: white;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 10px;
+            font-size: 0.7rem;
+            margin-top: 8px;
         }
 
-        @media (max-width: 768px) {
-            .barcode-grid {
-                grid-template-columns: 1fr;
+        .instruction {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
             }
 
-            h1 {
-                font-size: 1.5rem;
+            .barcode-card {
+                padding: 15px;
             }
         }
     </style>
@@ -113,86 +119,87 @@
 <body>
     <div class="container">
         <h1>📱 ShopSmart - Тестовые штрих-коды</h1>
-        <div class="barcode-grid">
 
-            <!-- Чай Тегуаньинь -->
-            <div class="barcode-card">
-                <h3>🍵 Китайский зеленый чай "Тегуаньинь"</h3>
-                <div class="price">890 ₽</div>
-                <div class="rating">★★★★★ 4.8</div>
-                <div class="barcode-image">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=4601234567890&code=EAN13&dpi=120" alt="Barcode">
-                </div>
-                <div class="barcode-number">4601234567890</div>
-                <div class="badge">Популярный</div>
+        <div class="barcode-card" onclick="copyCode('4601234567890')">
+            <h3>🍵 Китайский зеленый чай "Тегуаньинь"</h3>
+            <div class="price">890 ₽</div>
+            <div class="rating">★★★★★ 4.8</div>
+            <div class="barcode-img">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=4601234567890&code=EAN13&dpi=120" alt="Barcode">
             </div>
-
-            <!-- Крем -->
-            <div class="barcode-card">
-                <h3>💄 Крем для лица "Жемчужный"</h3>
-                <div class="price">1 250 ₽</div>
-                <div class="rating">★★★★☆ 4.5</div>
-                <div class="barcode-image">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=6901234567890&code=EAN13&dpi=120" alt="Barcode">
-                </div>
-                <div class="barcode-number">6901234567890</div>
-                <div class="badge">Хит продаж</div>
-            </div>
-
-            <!-- Перец -->
-            <div class="barcode-card">
-                <h3>🌶️ Сычуаньский перец горошком</h3>
-                <div class="price">450 ₽</div>
-                <div class="rating">★★★★★ 4.7</div>
-                <div class="barcode-image">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=6921234567890&code=EAN13&dpi=120" alt="Barcode">
-                </div>
-                <div class="barcode-number">6921234567890</div>
-                <div class="badge">Острый!</div>
-            </div>
-
-            <!-- Лапша -->
-            <div class="barcode-card">
-                <h3>🍜 Китайская лапша "Чоу Мейн"</h3>
-                <div class="price">320 ₽</div>
-                <div class="rating">★★★★☆ 4.3</div>
-                <div class="barcode-image">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=6931234567890&code=EAN13&dpi=120" alt="Barcode">
-                </div>
-                <div class="barcode-number">6931234567890</div>
-                <div class="badge">Новинка</div>
-            </div>
-
-            <!-- Соус -->
-            <div class="barcode-card">
-                <h3>🥫 Соус устричный Lee Kum Kee</h3>
-                <div class="price">380 ₽</div>
-                <div class="rating">★★★★★ 4.6</div>
-                <div class="barcode-image">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=6941234567890&code=EAN13&dpi=120" alt="Barcode">
-                </div>
-                <div class="barcode-number">6941234567890</div>
-                <div class="badge">Бестселлер</div>
-            </div>
-
-            <!-- Матча -->
-            <div class="barcode-card">
-                <h3>🍵 Чай матча "Matcha Premium"</h3>
-                <div class="price">1 650 ₽</div>
-                <div class="rating">★★★★★ 4.9</div>
-                <div class="barcode-image">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=6951234567890&code=EAN13&dpi=120" alt="Barcode">
-                </div>
-                <div class="barcode-number">6951234567890</div>
-                <div class="badge">Топ-1</div>
-            </div>
+            <div class="code">4601234567890</div>
+            <div class="badge">Популярный</div>
         </div>
 
-        <div style="text-align: center; margin-top: 30px; color: white;">
-            <p>📱 Откройте эту страницу на компьютере</p>
-            <p>📸 Наведите камеру телефона на любой штрих-код</p>
-            <p>✨ Приложение автоматически покажет товар</p>
+        <div class="barcode-card" onclick="copyCode('6901234567890')">
+            <h3>💄 Крем для лица "Жемчужный" Secret Key</h3>
+            <div class="price">1 250 ₽</div>
+            <div class="rating">★★★★☆ 4.5</div>
+            <div class="barcode-img">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=6901234567890&code=EAN13&dpi=120" alt="Barcode">
+            </div>
+            <div class="code">6901234567890</div>
+            <div class="badge">Хит продаж</div>
+        </div>
+
+        <div class="barcode-card" onclick="copyCode('6921234567890')">
+            <h3>🌶️ Сычуаньский перец горошком</h3>
+            <div class="price">450 ₽</div>
+            <div class="rating">★★★★★ 4.7</div>
+            <div class="barcode-img">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=6921234567890&code=EAN13&dpi=120" alt="Barcode">
+            </div>
+            <div class="code">6921234567890</div>
+            <div class="badge">Острый!</div>
+        </div>
+
+        <div class="barcode-card" onclick="copyCode('6931234567890')">
+            <h3>🍜 Китайская лапша "Чоу Мейн"</h3>
+            <div class="price">320 ₽</div>
+            <div class="rating">★★★★☆ 4.3</div>
+            <div class="barcode-img">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=6931234567890&code=EAN13&dpi=120" alt="Barcode">
+            </div>
+            <div class="code">6931234567890</div>
+            <div class="badge">Новинка</div>
+        </div>
+
+        <div class="barcode-card" onclick="copyCode('6941234567890')">
+            <h3>🥫 Соус устричный Lee Kum Kee</h3>
+            <div class="price">380 ₽</div>
+            <div class="rating">★★★★★ 4.6</div>
+            <div class="barcode-img">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=6941234567890&code=EAN13&dpi=120" alt="Barcode">
+            </div>
+            <div class="code">6941234567890</div>
+            <div class="badge">Бестселлер</div>
+        </div>
+
+        <div class="barcode-card" onclick="copyCode('6951234567890')">
+            <h3>🍵 Чай матча "Matcha Premium"</h3>
+            <div class="price">1 650 ₽</div>
+            <div class="rating">★★★★★ 4.9</div>
+            <div class="barcode-img">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=6951234567890&code=EAN13&dpi=120" alt="Barcode">
+            </div>
+            <div class="code">6951234567890</div>
+            <div class="badge">Топ-1</div>
+        </div>
+
+        <div class="instruction">
+            <p>📸 Наведите камеру на штрих-код</p>
+            <p>✨ Нажмите на карточку, чтобы скопировать номер</p>
         </div>
     </div>
+
+    <script>
+        function copyCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert(`Штрих-код ${code} скопирован!`);
+            }).catch(() => {
+                prompt('Скопируйте штрих-код вручную:', code);
+            });
+        }
+    </script>
 </body>
 </html>

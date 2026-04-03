@@ -1,26 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, CameraOff } from 'lucide-react';
-import { BrowserMultiFormatReader } from '@zxing/browser';
 import { useTranslation } from 'react-i18next';
+import { BrowserMultiFormatReader } from '@zxing/browser';
 
 interface BarcodeScannerProps {
     onClose: () => void;
     onScan: (barcode: string) => void;
-    onError?: (error: string) => void;
 }
 
-const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onError }) => {
+const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
     const { t } = useTranslation();
     const [hasPermission, setHasPermission] = useState<boolean | null>(null);
     const [errorMessage, setErrorMessage] = useState<string>('');
-    const [isScanningActive, setIsScanningActive] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
     const streamRef = useRef<MediaStream | null>(null);
     const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
-    const hasScannedRef = useRef(false); // Предотвращает многократное сканирование
+    const hasScannedRef = useRef(false);
+    const initAttemptedRef = useRef(false);
 
-    // Остановка сканирования
-    const stopScanner = () => {
+    // Остановка сканера
+    const stopScanner = useRef(() => {
         if (codeReaderRef.current) {
             try {
                 codeReaderRef.current = null;
@@ -29,29 +28,46 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
             }
         }
         if (streamRef.current) {
-            streamRef.current.getTracks().forEach(track => track.stop());
+            streamRef.current.getTracks().forEach(track => {
+                if (track.readyState === 'live') {
+                    track.stop();
+                }
+            });
             streamRef.current = null;
         }
-    };
+    }).current;
 
-    // Инициализация сканера
     useEffect(() => {
-        hasScannedRef.current = false;
+        if (initAttemptedRef.current) return;
+        initAttemptedRef.current = true;
 
         const initScanner = async () => {
             try {
                 if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                    setErrorMessage(t('error.camera.notSupported'));
+                    setErrorMessage(t('scan.error.general'));
                     setHasPermission(false);
                     return;
                 }
 
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const videoDevices = devices.filter(device => device.kind === 'videoinput');
 
-                const stream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: { exact: 'environment' } }
-                }).catch(async () => {
-                    return await navigator.mediaDevices.getUserMedia({ video: true });
-                });
+                if (videoDevices.length === 0) {
+                    setErrorMessage(t('scan.error.camera_not_found'));
+                    setHasPermission(false);
+                    return;
+                }
+
+                await new Promise(resolve => setTimeout(resolve, 100));
+
+                let stream;
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({
+                        video: { facingMode: { exact: 'environment' } }
+                    });
+                } catch {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                }
 
                 streamRef.current = stream;
 
@@ -62,6 +78,9 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
                 }
 
                 setHasPermission(true);
+                setErrorMessage('');
+
+                await new Promise(resolve => setTimeout(resolve, 500));
 
                 const codeReader = new BrowserMultiFormatReader();
                 codeReaderRef.current = codeReader;
@@ -69,20 +88,14 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
                 if (codeReader && videoRef.current) {
                     await codeReader.decodeFromVideoElement(
                         videoRef.current,
-                        (result, error) => {
-                            // Если уже отсканировали - игнорируем
+                        (result) => {
                             if (hasScannedRef.current) return;
 
-                            if (result && isScanningActive) {
+                            if (result) {
                                 hasScannedRef.current = true;
                                 const barcode = result.getText();
-                                console.log('Scanned barcode:', barcode);
-                                setIsScanningActive(false);
-
-                                // Останавливаем сканирование
+                                console.log('Scanned:', barcode);
                                 stopScanner();
-
-                                // Вызываем onScan
                                 onScan(barcode);
                             }
                         }
@@ -94,11 +107,13 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
                 setHasPermission(false);
 
                 if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
-                    setErrorMessage(t('error.camera.permission'));
+                    setErrorMessage(t('scan.error.camera_permission'));
                 } else if (err.name === 'NotFoundError') {
-                    setErrorMessage(t('error.camera.notFound'));
+                    setErrorMessage(t('scan.error.camera_not_found'));
+                } else if (err.name === 'NotReadableError') {
+                    setErrorMessage(t('scan.error.camera_busy'));
                 } else {
-                    setErrorMessage(t('error.camera.error'));
+                    setErrorMessage(t('scan.error.general'));
                 }
             }
         };
@@ -107,10 +122,10 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
 
         return () => {
             stopScanner();
+            initAttemptedRef.current = false;
         };
-    }, [onScan, isScanningActive, t]);
 
-    
+    }, []); // Убираем зависимости, так как используем useRef
 
     if (hasPermission === null) {
         return (
@@ -121,7 +136,6 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
                 </div>
             </div>
         );
-
     }
 
     if (!hasPermission) {
@@ -133,20 +147,31 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan, onErro
                         {t('error.camera.permission')}
                     </h3>
                     <p className="text-gray-600 text-center mb-4">
-                        {errorMessage || t('error.camera.error')}
+                        {errorMessage}
                     </p>
                     <div className="bg-yellow-50 p-3 rounded mb-4">
-                        <p className="text-sm font-semibold text-yellow-800 mb-1">💡 {t('scan.tip')}:</p>
-                        <ul className="text-xs text-yellow-700 list-disc list-inside">
-                            <li>{t('scan.camera.allow')}</li>
-                            <li>{t('scan.supported_formats')}</li>
+                        <p className="text-sm font-semibold text-yellow-800 mb-1">💡 {t('scan.solutions.title')}:</p>
+                        <ul className="text-xs text-yellow-700 list-disc list-inside space-y-1">
+                            <li>{t('scan.solutions.allow_camera')}</li>
+                            <li>{t('scan.solutions.close_apps')}</li>
+                            <li>{t('scan.solutions.reload')}</li>
+                            <li>{t('scan.solutions.use_chrome')}</li>
                         </ul>
                     </div>
                     <button
-                        onClick={onClose}
-                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+                        onClick={() => {
+                            initAttemptedRef.current = false;
+                            window.location.reload();
+                        }}
+                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 mb-2"
                     >
-                        {t('button.close')}
+                        {t('scan.reload_button')}
+                    </button>
+                    <button
+                        onClick={onClose}
+                        className="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300"
+                    >
+                        {t('scan.close_button')}
                     </button>
                 </div>
             </div>

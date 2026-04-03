@@ -108,6 +108,20 @@ const resources = {
             'message.searching': 'Поиск товара...',
 
 
+            'scan.error.product_not_found': 'Товар с таким штрих-кодом не найден',
+            'scan.error.camera_permission': 'Доступ к камере запрещен. Разрешите доступ в настройках браузера.',
+            'scan.error.camera_not_found': 'Камера не найдена на устройстве',
+            'scan.error.camera_busy': 'Камера занята другим приложением',
+            'scan.error.general': 'Не удалось получить доступ к камере. Перезагрузите страницу.',
+            'scan.solutions.title': 'Решения',
+            'scan.solutions.allow_camera': 'Разрешите доступ к камере в настройках браузера',
+            'scan.solutions.close_apps': 'Закройте другие приложения, использующие камеру',
+            'scan.solutions.reload': 'Перезагрузите страницу и попробуйте снова',
+            'scan.solutions.use_chrome': 'Используйте браузер Chrome',
+            'scan.reload_button': 'Перезагрузить страницу',
+            'scan.close_button': 'Закрыть',
+            'scan.try_again': 'Попробовать снова',
+            'scan.cancel': 'Отмена',
 
         }
     },
@@ -211,6 +225,21 @@ const resources = {
             'message.noData': 'No data',
             'message.scanning': 'Scanning...',
             'message.searching': 'Searching for product...',
+
+            'scan.error.product_not_found': 'Product with this barcode not found',
+            'scan.error.camera_permission': 'Camera access denied. Please allow access in browser settings.',
+            'scan.error.camera_not_found': 'Camera not found on device',
+            'scan.error.camera_busy': 'Camera is busy with another application',
+            'scan.error.general': 'Failed to access camera. Please reload the page.',
+            'scan.solutions.title': 'Solutions',
+            'scan.solutions.allow_camera': 'Allow camera access in browser settings',
+            'scan.solutions.close_apps': 'Close other applications using the camera',
+            'scan.solutions.reload': 'Reload the page and try again',
+            'scan.solutions.use_chrome': 'Use Chrome browser',
+            'scan.reload_button': 'Reload page',
+            'scan.close_button': 'Close',
+            'scan.try_again': 'Try again',
+            'scan.cancel': 'Cancel',
         }
     },
     zh: {
@@ -313,6 +342,21 @@ const resources = {
             'message.noData': '暂无数据',
             'message.scanning': '扫描中...',
             'message.searching': '搜索商品...',
+
+            'scan.error.product_not_found': '未找到此条形码的商品',
+            'scan.error.camera_permission': '相机权限被拒绝，请在浏览器设置中允许访问',
+            'scan.error.camera_not_found': '未找到相机设备',
+            'scan.error.camera_busy': '相机正被其他应用使用',
+            'scan.error.general': '无法访问相机，请重新加载页面',
+            'scan.solutions.title': '解决方案',
+            'scan.solutions.allow_camera': '在浏览器设置中允许相机访问',
+            'scan.solutions.close_apps': '关闭其他使用相机的应用',
+            'scan.solutions.reload': '重新加载页面并重试',
+            'scan.solutions.use_chrome': '使用Chrome浏览器',
+            'scan.reload_button': '重新加载页面',
+            'scan.close_button': '关闭',
+            'scan.try_again': '重试',
+            'scan.cancel': '取消',
         }
     }
 };
