@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, CameraOff, Camera } from 'lucide-react';
 
 interface BarcodeScannerProps {
@@ -7,13 +7,14 @@ interface BarcodeScannerProps {
 }
 
 const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
+  const [userRequested, setUserRequested] = useState(false);
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [isCameraActive, setIsCameraActive] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const hasScannedRef = useRef(false);
 
-  // Запуск камеры по кнопке
+  // Запуск камеры (только после клика)
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -29,12 +30,10 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
       }
 
       setHasPermission(true);
-      setIsCameraActive(true);
       setErrorMessage('');
     } catch (err: any) {
       console.error('Camera error:', err);
       setHasPermission(false);
-      setIsCameraActive(false);
       if (err.name === 'NotAllowedError') {
         setErrorMessage('Разрешите доступ к камере в браузере');
       } else if (err.name === 'NotFoundError') {
@@ -54,13 +53,16 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
     onClose();
   };
 
-  // Демо-скан (для теста)
+  // Демо-скан для теста
   const handleMockScan = () => {
+    if (hasScannedRef.current) return;
+    hasScannedRef.current = true;
     onScan('4601234567890');
+    setTimeout(() => { hasScannedRef.current = false; }, 2000);
   };
 
-  // Если камера ещё не включена — показываем кнопку
-  if (!isCameraActive) {
+  // ЭТАП 1: Пользователь ещё не нажал «Включить камеру»
+  if (!userRequested) {
     return (
       <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center p-4">
         <button
@@ -76,7 +78,10 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
             Для сканирования штрих-кодов необходимо разрешить доступ к камере.
           </p>
           <button
-            onClick={startCamera}
+            onClick={() => {
+              setUserRequested(true);
+              startCamera();
+            }}
             className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
           >
             Включить камеру
@@ -92,7 +97,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
     );
   }
 
-  // Если камера включена, но произошла ошибка
+  // ЭТАП 2: Камера запрошена, но произошла ошибка
   if (hasPermission === false) {
     return (
       <div className="fixed inset-0 bg-black z-50 flex items-center justify-center p-4">
@@ -100,7 +105,16 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
           <CameraOff className="w-16 h-16 mx-auto mb-4 text-red-500" />
           <h3 className="text-xl font-semibold mb-2">Камера не доступна</h3>
           <p className="text-gray-600 mb-4">{errorMessage}</p>
-          <button onClick={stopAndClose} className="w-full bg-blue-600 text-white py-2 rounded-lg">
+          <button
+            onClick={() => {
+              setUserRequested(false);
+              setHasPermission(null);
+            }}
+            className="w-full bg-blue-600 text-white py-2 rounded-lg"
+          >
+            Попробовать снова
+          </button>
+          <button onClick={stopAndClose} className="w-full mt-2 bg-gray-200 text-gray-800 py-2 rounded-lg">
             Закрыть
           </button>
         </div>
@@ -108,7 +122,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
     );
   }
 
-  // Камера активна — показываем видео
+  // ЭТАП 3: Камера работает — показываем видео
   return (
     <div className="fixed inset-0 bg-black z-50">
       <button
