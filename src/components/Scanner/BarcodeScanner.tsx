@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, CameraOff, Camera } from 'lucide-react';
+import { BrowserMultiFormatReader } from '@zxing/browser';
 
 interface BarcodeScannerProps {
   onClose: () => void;
@@ -10,11 +11,33 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
   const [userRequested, setUserRequested] = useState(false);
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [isScanning, setIsScanning] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
   const hasScannedRef = useRef(false);
 
-  // Запуск камеры (только после клика)
+  // Остановка сканера
+  const stopScanner = () => {
+    if (codeReaderRef.current) {
+      try {
+        codeReaderRef.current = null;
+      } catch (err) {
+        console.error('Error stopping scanner:', err);
+      }
+    }
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => {
+        if (track.readyState === 'live') {
+          track.stop();
+        }
+      });
+      streamRef.current = null;
+    }
+    setIsScanning(false);
+  };
+
+  // Запуск камеры и сканера
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -31,6 +54,10 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
 
       setHasPermission(true);
       setErrorMessage('');
+      
+      // Запускаем распознавание после небольшой задержки
+      setTimeout(() => startBarcodeReader(), 500);
+      
     } catch (err: any) {
       console.error('Camera error:', err);
       setHasPermission(false);
@@ -44,12 +71,38 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
     }
   };
 
+  // Запуск читателя штрих-кодов
+  const startBarcodeReader = async () => {
+    if (!videoRef.current || isScanning) return;
+    
+    try {
+      setIsScanning(true);
+      const codeReader = new BrowserMultiFormatReader();
+      codeReaderRef.current = codeReader;
+      
+      await codeReader.decodeFromVideoElement(
+        videoRef.current,
+        (result) => {
+          if (hasScannedRef.current) return;
+          
+          if (result) {
+            hasScannedRef.current = true;
+            const barcode = result.getText();
+            console.log('Scanned barcode:', barcode);
+            stopScanner();
+            onScan(barcode);
+          }
+        }
+      );
+    } catch (err) {
+      console.error('Barcode reader error:', err);
+      setIsScanning(false);
+    }
+  };
+
   // Остановка камеры при закрытии
   const stopAndClose = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop());
-      streamRef.current = null;
-    }
+    stopScanner();
     onClose();
   };
 
@@ -57,6 +110,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
   const handleMockScan = () => {
     if (hasScannedRef.current) return;
     hasScannedRef.current = true;
+    stopScanner();
     onScan('4601234567890');
     setTimeout(() => { hasScannedRef.current = false; }, 2000);
   };
@@ -122,7 +176,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
     );
   }
 
-  // ЭТАП 3: Камера работает — показываем видео
+  // ЭТАП 3: Камера работает — показываем видео и сканируем
   return (
     <div className="fixed inset-0 bg-black z-50">
       <button
@@ -152,7 +206,9 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
       </div>
 
       <div className="absolute bottom-8 left-0 right-0 text-center">
-        <p className="text-white text-lg font-semibold mb-2">Наведите камеру на штрих-код</p>
+        <p className="text-white text-lg font-semibold mb-2">
+          {isScanning ? 'Сканирование...' : 'Наведите камеру на штрих-код'}
+        </p>
         <button
           onClick={handleMockScan}
           className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg"
