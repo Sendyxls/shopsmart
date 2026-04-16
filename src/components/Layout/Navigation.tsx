@@ -21,7 +21,7 @@ const Navigation: React.FC = () => {
                         key={path}
                         to={path}
                         className={({ isActive }) =>
-                            `flex flex-col items-center justify-center flex-1 h-full ${isActive ? 'text-blue-600' : 'text-gray-600'
+                            `flex flex-col items-center justify-center flex-1 h-full ${isActive ? 'text-brand-green' : 'text-gray-600'
                             }`
                         }
                     >
