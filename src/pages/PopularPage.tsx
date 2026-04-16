@@ -50,7 +50,7 @@ const PopularPage: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
       </div>
     );
   }
@@ -69,7 +69,7 @@ const PopularPage: React.FC = () => {
             placeholder={t('popular.search.placeholder')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
       </div>
@@ -108,7 +108,7 @@ const PopularPage: React.FC = () => {
                   </h3>
                   
                   <div className="flex justify-between items-center mt-2">
-                    <span className="text-lg font-bold text-blue-600">
+                    <span className="text-lg font-bold bg-brand-green">
                       {formatPrice(product.price)}
                     </span>
                     
