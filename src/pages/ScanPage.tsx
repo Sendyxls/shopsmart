@@ -80,7 +80,7 @@ const ScanPage: React.FC = () => {
                     <div className="space-y-3">
                         <button
                             onClick={tryAgain}
-                            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                            className="w-full bg-brand-green text-white py-2 rounded-lg hover:bg-green-700 transition-colors"
                         >
                             {t('scan.try_again')}
                         </button>
@@ -115,7 +115,7 @@ const ScanPage: React.FC = () => {
                     <button
                         onClick={handleStartScan}
                         disabled={isScanning}
-                        className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-lg disabled:opacity-50"
+                        className="w-full bg-brand-green text-white py-4 px-6 rounded-xl hover:bg-green-700 transition-colors flex items-center justify-center gap-2 text-lg disabled:opacity-50"
                     >
                         <Camera className="w-6 h-6" />
                         {isScanning ? t('scan.searching') : t('scan.button')}
