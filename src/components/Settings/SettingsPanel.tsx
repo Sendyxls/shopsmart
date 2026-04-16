@@ -49,7 +49,7 @@ const SettingsPanel: React.FC = () => {
                 <select
                     value={selectedLang}
                     onChange={(e) => setSelectedLang(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 >
                     <option value="ru">{t('language.ru')}</option>
                     <option value="en">{t('language.en')}</option>
@@ -65,7 +65,7 @@ const SettingsPanel: React.FC = () => {
                 <select
                     value={selectedCurr}
                     onChange={handleCurrencyChange}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 >
                     <option value="RUB">{t('currency.rub')}</option>
                     <option value="USD">{t('currency.usd')}</option>
@@ -84,7 +84,7 @@ const SettingsPanel: React.FC = () => {
                     value={rateInput}
                     onChange={(e) => setRateInput(e.target.value)}
                     placeholder={t('settings.manualRate.placeholder')}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
                 {selectedCurr !== 'RUB' && rateInput && (
                     <p className="text-xs text-gray-500 mt-1">
@@ -96,7 +96,7 @@ const SettingsPanel: React.FC = () => {
             {/* Кнопка сохранения */}
             <button
                 onClick={handleSave}
-                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-brand-green text-white py-3 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
             >
                 <Save className="w-5 h-5" />
                 {t('settings.save')}
