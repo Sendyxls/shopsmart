@@ -13,7 +13,7 @@ function App() {
     return (
         <CurrencyProvider>
             <Router>
-                <div className="min-h-screen bg-gray-50 pb-16">
+                <div className="min-h-screen bg-brand-green pb-16">
                     <Routes>
                         <Route path="/" element={<ScanPage />} />
                         <Route path="/popular" element={<PopularPage />} />
