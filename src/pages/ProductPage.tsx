@@ -44,7 +44,7 @@ const ProductPage: React.FC = () => {
             <div className="p-4">
                 <button
                     onClick={() => navigate('/')}
-                    className="mb-4 text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                    className="mb-4 bg-brand-green hover:text-green-800 flex items-center gap-1"
                 >
                     <ArrowLeft className="w-4 h-4" /> Назад
                 </button>
@@ -59,7 +59,7 @@ const ProductPage: React.FC = () => {
         <div className="p-4">
             <button
                 onClick={() => navigate(-1)}
-                className="mb-4 text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                className="mb-4 bg-brand-green hover:text-green-800 flex items-center gap-1"
             >
                 <ArrowLeft className="w-4 h-4" /> Назад
             </button>
