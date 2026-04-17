@@ -108,7 +108,7 @@ const PopularPage: React.FC = () => {
                   </h3>
                   
                   <div className="flex justify-between items-center mt-2">
-                    <span className="text-lg font-bold bg-brand-green">
+                    <span className="text-lg font-bold">
                       {formatPrice(product.price)}
                     </span>
                     
