@@ -126,7 +126,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
           <X className="w-6 h-6" />
         </button>
         <div className="bg-white p-6 rounded-lg max-w-sm w-full text-center">
-          <Camera className="w-16 h-16 mx-auto mb-4 bg-brand-green" />
+          <Camera className="w-16 h-16 mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2">Доступ к камере</h3>
           <p className="text-gray-600 mb-4">
             Для сканирования штрих-кодов необходимо разрешить доступ к камере.
