@@ -45,11 +45,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     </div>
                 </div>
 
-                 {/*Рейтинг среди туристов */}
-                {/* <div className="mb-6 text-sm text-gray-600">
-                    {t('product.rating')}: {product.rating} / 5
-                </div> */}
-
                 {/* Описание */}
                 <div className="mb-4">
                     <h2 className="font-semibold text-gray-900 mb-2">{t('product.description')}</h2>
