@@ -65,7 +65,7 @@ export const mockProducts: Product[] = [
     id: '1',
     barcode: '4601234567890',
     name: {
-      ru: 'Конфеты "Птичье молоко"',
+      ru: 'Конфеты «Птичье молоко»',
       en: 'Bird\'s Milk Candies',
       zh: '鸟乳糖果'
     },
@@ -87,7 +87,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '张丽',
-        date: '2024-03-15',
+        date: '2026-03-15',
         text: {
           ru: 'Восхитительный вкус! Лучшие конфеты',
           en: 'Delicious taste! The best candies',
@@ -97,7 +97,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '王强',
-        date: '2024-03-10',
+        date: '2026-03-10',
         text: {
           ru: 'Классика! Всегда покупаю эти конфеты',
           en: 'Classic! I always buy these candies',
@@ -107,7 +107,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '刘洋',
-        date: '2024-03-05',
+        date: '2026-03-05',
         text: {
           ru: 'Нежнейшее суфле, тает во рту!',
           en: 'The most delicate souffle, melts in your mouth!',
@@ -121,7 +121,7 @@ export const mockProducts: Product[] = [
     id: '2',
     barcode: '6901234567890',
     name: {
-      ru: 'Шоколад "Алёнка"',
+      ru: 'Шоколад «Алёнка»',
       en: 'Alyonka Chocolate',
       zh: '阿廖卡巧克力'
     },
@@ -143,7 +143,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '张丽',
-        date: '2024-03-14',
+        date: '2026-03-14',
         text: {
           ru: 'Любимый шоколад! Нежный и вкусный',
           en: 'Favorite chocolate! Tender and delicious',
@@ -153,7 +153,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '王强',
-        date: '2024-03-09',
+        date: '2026-03-09',
         text: {
           ru: 'Хороший молочный шоколад за свою цену',
           en: 'Good milk chocolate for its price',
@@ -163,7 +163,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '刘洋',
-        date: '2024-03-03',
+        date: '2026-03-03',
         text: {
           ru: 'Классический вкус Алёнки! Всегда беру',
           en: 'Classic Alyonka taste! I always take it',
@@ -177,7 +177,7 @@ export const mockProducts: Product[] = [
     id: '3',
     barcode: '6921234567890',
     name: {
-      ru: 'Форель "Русское море"',
+      ru: 'Форель «Русское море»',
       en: 'Russian Sea Trout',
       zh: '俄罗斯海鳟鱼'
     },
@@ -199,7 +199,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '王强',
-        date: '2024-03-13',
+        date: '2026-03-13',
         text: {
           ru: 'Отличное качество! Форель свежая и нежная',
           en: 'Excellent quality! Fresh and tender trout',
@@ -209,7 +209,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '刘静',
-        date: '2024-03-08',
+        date: '2026-03-08',
         text: {
           ru: 'Очень вкусная, но цена высоковата',
           en: 'Very tasty, but the price is high',
@@ -219,7 +219,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '张丽',
-        date: '2024-03-02',
+        date: '2026-03-02',
         text: {
           ru: 'Премиум качество! Лучшая форель в городе',
           en: 'Premium quality! The best trout in the city',
@@ -233,7 +233,7 @@ export const mockProducts: Product[] = [
     id: '4',
     barcode: '6931234567890',
     name: {
-      ru: 'Конфеты "Коркунов"',
+      ru: 'Конфеты «Коркунов»',
       en: 'Korkunov Candies',
       zh: '科尔库诺夫糖果'
     },
@@ -255,7 +255,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '李娜',
-        date: '2024-03-12',
+        date: '2026-03-12',
         text: {
           ru: 'Превосходные конфеты! Идеальный подарок',
           en: 'Excellent candies! Perfect gift',
@@ -265,7 +265,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '王强',
-        date: '2024-03-07',
+        date: '2026-03-07',
         text: {
           ru: 'Лучшие конфеты на рынке! Всегда покупаю к празднику',
           en: 'The best candies on the market! I always buy for the holiday',
@@ -275,7 +275,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '张丽',
-        date: '2024-03-01',
+        date: '2026-03-01',
         text: {
           ru: 'Вкусные, но дороговато',
           en: 'Delicious, but a bit expensive',
@@ -311,7 +311,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '王芳',
-        date: '2024-03-11',
+        date: '2026-03-11',
         text: {
           ru: 'Отличный мед! Натуральный и очень вкусный',
           en: 'Excellent honey! Natural and very tasty',
@@ -321,7 +321,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '李伟',
-        date: '2024-03-06',
+        date: '2026-03-06',
         text: {
           ru: 'Хороший продукт, рекомендую',
           en: 'Good product, I recommend',
@@ -331,7 +331,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '张丽',
-        date: '2024-02-28',
+        date: '2026-02-28',
         text: {
           ru: 'Покупаю уже третий раз, качество неизменно высокое!',
           en: 'I buy it for the third time, the quality is consistently high!',
@@ -345,7 +345,7 @@ export const mockProducts: Product[] = [
     id: '6',
     barcode: '6951234567890',
     name: {
-      ru: 'Хлеб "Бородинский"',
+      ru: 'Хлеб «Бородинский»',
       en: 'Borodinsky Bread',
       zh: '鲍罗金诺面包'
     },
@@ -367,7 +367,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '李娜',
-        date: '2024-03-10',
+        date: '2026-03-10',
         text: {
           ru: 'Настоящий бородинский! Очень ароматный',
           en: 'Real Borodinsky! Very aromatic',
@@ -377,7 +377,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '王强',
-        date: '2024-03-05',
+        date: '2026-03-05',
         text: {
           ru: 'Хороший ржаной хлеб, но кориандр чувствуется слишком сильно',
           en: 'Good rye bread, but the coriander is too strong',
@@ -387,7 +387,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '刘静',
-        date: '2024-02-29',
+        date: '2026-02-29',
         text: {
           ru: 'Люблю этот хлеб! Покупаю постоянно',
           en: 'I love this bread! I buy it regularly',
@@ -401,7 +401,7 @@ export const mockProducts: Product[] = [
     id: '7',
     barcode: '6961234567890',
     name: {
-      ru: 'Колбаса "Краковская"',
+      ru: 'Колбаса «Краковская»',
       en: 'Krakowska Sausage',
       zh: '克拉科夫香肠'
     },
@@ -423,7 +423,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '张明',
-        date: '2024-03-09',
+        date: '2026-03-09',
         text: {
           ru: 'Вкусная колбаса',
           en: 'Tasty sausage',
@@ -433,7 +433,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '王芳',
-        date: '2024-03-04',
+        date: '2026-03-04',
         text: {
           ru: 'Хорошая колбаса, но немного соленая',
           en: 'Good sausage, but a bit salty',
@@ -443,7 +443,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '刘洋',
-        date: '2024-02-27',
+        date: '2026-02-27',
         text: {
           ru: 'Отличный вкус и аромат! Рекомендую',
           en: 'Excellent taste and aroma! I recommend',
@@ -479,7 +479,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '李娜',
-        date: '2024-03-08',
+        date: '2026-03-08',
         text: {
           ru: 'Нежный зефир, но немного сладковат',
           en: 'Delicate marshmallow, but a bit too sweet',
@@ -489,7 +489,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '陈杰',
-        date: '2024-03-03',
+        date: '2026-03-03',
         text: {
           ru: 'Классический зефир, очень вкусный',
           en: 'Classic marshmallow, very tasty',
@@ -499,7 +499,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '刘静',
-        date: '2024-02-26',
+        date: '2026-02-26',
         text: {
           ru: 'Воздушный и вкусный, детям очень понравился',
           en: 'Airy and tasty, the children really liked it',
@@ -513,7 +513,7 @@ export const mockProducts: Product[] = [
     id: '9',
     barcode: '6981234567890',
     name: {
-      ru: 'Напиток "Добрый"',
+      ru: 'Напиток «Добрый»',
       en: 'Dobry Drink',
       zh: '多布瑞饮料'
     },
@@ -535,7 +535,7 @@ export const mockProducts: Product[] = [
     reviews: [
       {
         author: '李娜',
-        date: '2024-03-07',
+        date: '2026-03-07',
         text: {
           ru: 'Освежающий напиток, приятный вкус',
           en: 'Refreshing drink, pleasant taste',
@@ -545,7 +545,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '张明',
-        date: '2024-03-02',
+        date: '2026-03-02',
         text: {
           ru: 'Покупаю постоянно, вся семья любит!',
           en: 'I buy it regularly, the whole family loves it!',
@@ -555,7 +555,7 @@ export const mockProducts: Product[] = [
       },
       {
         author: '王芳',
-        date: '2024-02-25',
+        date: '2026-02-25',
         text: {
           ru: 'Хороший сок, натуральный вкус',
           en: 'Good juice, natural taste',
