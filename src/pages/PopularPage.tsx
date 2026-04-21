@@ -74,9 +74,9 @@ const PopularPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="mb-4 text-sm text-gray-600">
+      {/* <div className="mb-4 text-sm text-gray-600">
         {t('popular.found_count')}: {filteredProducts.length}
-      </div>
+      </div> */}
 
       {error ? (
         <div className="text-center text-red-600 p-4">
