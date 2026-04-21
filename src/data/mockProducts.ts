@@ -52,33 +52,33 @@ export const mockProducts: Product[] = [
         alternatives: [
             {
                 storeName: {
-                    ru: 'Чайный домик',
-                    en: 'Tea House',
-                    zh: '茶馆'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ул. Советская, 5',
+                address: 'ул. Калинина, 8',
                 price: 950,
                 distance: '200 м'
             },
             {
                 storeName: {
-                    ru: 'Ашан',
-                    en: 'Auchan',
-                    zh: '欧尚'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ТЦ Мега, 2 этаж',
+                address: 'Черёмуховая ул., 15',
                 price: 820,
                 distance: '1.2 км'
             },
             {
                 storeName: {
-                    ru: 'Ozon',
-                    en: 'Ozon',
-                    zh: 'Ozon'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'доставка',
+                address: 'Светланская ул., 29',
                 price: 790,
-                distance: 'онлайн'
+                distance: '800м'
             }
         ],
         reviews: [
@@ -126,26 +126,36 @@ export const mockProducts: Product[] = [
         },
         image: 'https://i.pinimg.com/1200x/11/88/29/11882945e05bc54d30aebf450622fbcb.jpg',
         scan_count: 856,
-        alternatives: [
+       alternatives: [
             {
                 storeName: {
-                    ru: 'Золотое яблоко',
-                    en: 'Golden Apple',
-                    zh: '金苹果'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ТЦ Галерея',
-                price: 1350,
-                distance: '150 м'
+                address: 'ул. Калинина, 8',
+                price: 950,
+                distance: '200 м'
             },
             {
                 storeName: {
-                    ru: 'Лэтуаль',
-                    en: 'Letual',
-                    zh: 'L\'Etoile'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ул. Кирова, 10',
-                price: 1190,
-                distance: '500 м'
+                address: 'Черёмуховая ул., 15',
+                price: 820,
+                distance: '1.2 км'
+            },
+            {
+                storeName: {
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
+                },
+                address: 'Светланская ул., 29',
+                price: 790,
+                distance: '800м'
             }
         ],
         reviews: [
@@ -183,26 +193,36 @@ export const mockProducts: Product[] = [
         },
         image: 'https://i.pinimg.com/736x/ac/4a/a5/ac4aa55b5be8d5c3bab611284b5ee93c.jpg',
         scan_count: 523,
-        alternatives: [
+       alternatives: [
             {
                 storeName: {
-                    ru: 'Магазин восточных специй',
-                    en: 'Oriental Spices Store',
-                    zh: '东方香料店'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ул. Ленина, 25',
-                price: 490,
-                distance: '300 м'
+                address: 'ул. Калинина, 8',
+                price: 950,
+                distance: '200 м'
             },
             {
                 storeName: {
-                    ru: 'Перекресток',
-                    en: 'Perekrestok',
-                    zh: '十字路口'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'пр. Мира, 15',
-                price: 420,
-                distance: '800 м'
+                address: 'Черёмуховая ул., 15',
+                price: 820,
+                distance: '1.2 км'
+            },
+            {
+                storeName: {
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
+                },
+                address: 'Светланская ул., 29',
+                price: 790,
+                distance: '800м'
             }
         ],
         reviews: [
@@ -243,23 +263,33 @@ export const mockProducts: Product[] = [
         alternatives: [
             {
                 storeName: {
-                    ru: 'Ашан',
-                    en: 'Auchan',
-                    zh: '欧尚'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ТЦ Мега',
-                price: 299,
+                address: 'ул. Калинина, 8',
+                price: 950,
+                distance: '200 м'
+            },
+            {
+                storeName: {
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
+                },
+                address: 'Черёмуховая ул., 15',
+                price: 820,
                 distance: '1.2 км'
             },
             {
                 storeName: {
-                    ru: 'Лента',
-                    en: 'Lenta',
-                    zh: 'Lenta'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ул. Гагарина, 42',
-                price: 310,
-                distance: '900 м'
+                address: 'Светланская ул., 29',
+                price: 790,
+                distance: '800м'
             }
         ],
         reviews: [
@@ -300,23 +330,33 @@ export const mockProducts: Product[] = [
         alternatives: [
             {
                 storeName: {
-                    ru: 'Магазин азиатской кухни',
-                    en: 'Asian Cuisine Store',
-                    zh: '亚洲美食店'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ул. Ленина, 18',
-                price: 420,
-                distance: '250 м'
+                address: 'ул. Калинина, 8',
+                price: 950,
+                distance: '200 м'
             },
             {
                 storeName: {
-                    ru: 'Глобус',
-                    en: 'Globus',
-                    zh: 'Globus'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ТЦ Континент',
-                price: 360,
-                distance: '1.5 км'
+                address: 'Черёмуховая ул., 15',
+                price: 820,
+                distance: '1.2 км'
+            },
+            {
+                storeName: {
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
+                },
+                address: 'Светланская ул., 29',
+                price: 790,
+                distance: '800м'
             }
         ],
         reviews: [
@@ -357,23 +397,33 @@ export const mockProducts: Product[] = [
         alternatives: [
             {
                 storeName: {
-                    ru: 'Чайный дом',
-                    en: 'Tea House',
-                    zh: '茶馆'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ул. Пушкина, 12',
-                price: 1790,
-                distance: '350 м'
+                address: 'ул. Калинина, 8',
+                price: 950,
+                distance: '200 м'
             },
             {
                 storeName: {
-                    ru: 'Coffee Like',
-                    en: 'Coffee Like',
-                    zh: 'Coffee Like'
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
                 },
-                address: 'ТЦ Галерея',
-                price: 1590,
-                distance: '200 м'
+                address: 'Черёмуховая ул., 15',
+                price: 820,
+                distance: '1.2 км'
+            },
+            {
+                storeName: {
+                    ru: 'Самбери',
+                    en: 'Sambury',
+                    zh: '桑伯里'
+                },
+                address: 'Светланская ул., 29',
+                price: 790,
+                distance: '800м'
             }
         ],
         reviews: [
