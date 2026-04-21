@@ -144,7 +144,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
             onClick={handleMockScan}
             className="w-full mt-3 bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300"
           >
-            Демо-скан (чай)
+            Демо-скан
           </button>
         </div>
       </div>
