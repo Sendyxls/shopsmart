@@ -213,7 +213,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onClose, onScan }) => {
           onClick={handleMockScan}
           className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg"
         >
-          Тест (чай)
+          Тест
         </button>
       </div>
     </div>
